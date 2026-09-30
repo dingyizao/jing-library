@@ -236,14 +236,49 @@
   footer{background:var(--ink);color:rgba(244,239,228,.4);padding:40px 6vw;border-top:1px solid var(--line-dark);
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--sans);font-size:12px;letter-spacing:.14em}
 
+  /* 手机端天上的地图：逐条列表 */
+  .skymap-list{display:none}
+
   @media (max-width:960px){
+    /* 留白收紧 */
+    .judge,.skymap,.spirits,.omen,.solar,.mech,.match,.names{padding:72px 0}
+    .hero-inner{padding:16vh 6vw 10vh}
+    .hero h1{font-size:clamp(34px,10.5vw,52px)}
+    .hero-sub{font-size:15px;margin-bottom:32px}
+    h2{font-size:26px}
+    .lead{font-size:14.5px}
+    .kicker{font-size:11px;margin-bottom:14px}
+    /* 单列布局 */
     .judge-grid,.mech-grid,.match-grid{grid-template-columns:1fr}
-    .spirit-grid{grid-template-columns:1fr}
+    .spirit-grid{grid-template-columns:1fr;gap:14px}
     .omen-grid{grid-template-columns:1fr}
     .solar-grid{grid-template-columns:repeat(2,1fr)}
     .season-rule{grid-template-columns:repeat(2,1fr)}
-    .hero-stats .wrap{grid-template-columns:repeat(2,1fr)}
+    .hero-stats .wrap{grid-template-columns:repeat(2,1fr);gap:14px}
     .nav-links{display:none}
+    /* 卡片瘦身 */
+    .spirit-card{padding:22px 20px}
+    .spirit-name{font-size:22px}
+    .spirit-quote{font-size:14.5px}
+    .judge-col{padding:30px 24px}
+    .mech-card{padding:28px 24px}
+    .omen-card{padding:26px 24px}
+    .solar-cell{padding:14px 14px}
+    .solar-cell p{font-size:12.5px}
+    .match-result{padding:28px 22px;min-height:260px}
+    .tabs{gap:8px;margin:36px 0 28px}
+    .tab{padding:8px 16px;font-size:12px}
+    /* 天上的地图：手机换成列表 */
+    .skymap-scroll{margin-top:36px}
+    .skymap-grid{display:none}
+    .skymap-list{display:block}
+    .sky-item{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line-dark);align-items:baseline}
+    .sky-item .who{min-width:64px;font-size:16.5px;font-weight:700}
+    .sky-item .who i{font-style:normal;color:var(--gold);font-size:11px}
+    .sky-item .what{flex:1;font-size:13px;color:rgba(244,239,228,.6);line-height:1.6}
+    .sky-item .what b{color:var(--cinnabar);font-weight:400;font-family:var(--sans);font-size:11px;letter-spacing:.1em;margin-right:8px}
+    .sky-item .what em{font-style:normal;color:rgba(244,239,228,.85)}
+    .sky-group{font-family:var(--sans);font-size:11px;letter-spacing:.3em;color:var(--gold);padding:22px 0 4px}
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto}
@@ -267,7 +302,7 @@
     <p class="hero-eyebrow">点石成精 JING · 精石库初步设定集</p>
     <h1>二十五位石精，<br><em>各守一块天。</em></h1>
     <p class="hero-en">The Stone Spirit Library · First 25</p>
-    <p class="hero-sub">天是一整片补起来的。传说里雅安那一处没补严实，风从漏口灌进来，别处的补天石一块块松动，顺着天往漏口挪，挪到了，就跟着大雨落下来。<b>它守的是哪一块天，底下就是哪一段典故发生的地方。</b></p>
+    <p class="hero-sub">传说里，雅安上空有一处天一直没补严实。别处补天的石头被风吹松，顺着天挪到漏口，跟着大雨落进江里。<b>它在天上守的是哪块地方，底下就发生过哪一段典故。</b></p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#match">找到属于你的那块</a>
       <a class="btn btn-ghost" href="#map">先看天上的地图</a>
@@ -289,7 +324,7 @@
     <div class="reveal">
       <p class="kicker">判定 · How a stone is read</p>
       <h2>本命看颜色，心境看造型</h2>
-      <p class="lead" style="margin-top:18px">水会把大多数石头磨圆，所以圆润最多；孔洞最少。少见的底色当作惊喜——不涨价，不单卖，也不为了凑齐去收奇形怪状的石头。</p>
+      <p class="lead" style="margin-top:18px">水会把大多数石头磨圆，所以圆润的最多，孔洞的最少。少见的底色就当惊喜——不涨价，也不单卖。</p>
     </div>
     <div class="judge-grid reveal">
       <div class="judge-col">
@@ -315,7 +350,7 @@
         </ul>
       </div>
     </div>
-    <p class="judge-note reveal">人设要求：像睡了很久、刚醒的朋友，直、温和、有点笨拙；第一句话中文不超过 30 个字；引古书只用核对过的原文；给力量，不给判决；来历只说很久很久；对外只说传说里。</p>
+    <p class="judge-note reveal">说到底就一句话：石精像个刚睡醒的朋友，直、温和、有点笨。引古书只用核对过的原文，来历只说"很久很久"，对外只说"传说里"。</p>
   </div>
 </section>
 
@@ -325,7 +360,7 @@
     <div class="reveal">
       <p class="kicker">天上的地图 · The Sky Map</p>
       <h2>它守的那块天底下，<br>就是典故发生的地方</h2>
-      <p class="lead" style="margin-top:18px;color:rgba(244,239,228,.6)">每格依次是名字、底色、守护典故和它守的那块天。带 ◆ 的有奇相。来历分三截：先讲它守的天底下古书里的一段事，照原文讲；再讲它怎么挪到漏口掉下来；最后讲水把它磨成了什么样。</p>
+      <p class="lead" style="margin-top:18px;color:rgba(244,239,228,.6)">每格是一位石精：名字、底色、守护典故，还有它守过的那块天。带 ◆ 的，身上有一处奇相。</p>
     </div>
     <div class="skymap-scroll reveal">
       <div class="skymap-grid">
@@ -362,7 +397,7 @@
         <div class="sky-cell"><b>玄星 <i>◆</i></b><span class="base">夜空</span><span class="sky">一个老诗人院子的上空</span><span class="canon-name">石不能言</span></div>
       </div>
     </div>
-    <p class="skymap-note reveal">同一底色的其他石头默认沿用这一位的守护典故；AI 建档时可在同本命典故池里换，守的那块天跟着换。</p>
+    <p class="skymap-note reveal">同一底色的石头，默认沿用这位的守护典故。</p>
   </div>
 </section>
 
@@ -573,7 +608,7 @@
     <div class="reveal">
       <p class="kicker">奇相 · Rare marks</p>
       <h2>少见的特征，只加一段故事</h2>
-      <p class="lead" style="margin-top:18px;color:rgba(244,239,228,.6)">奇相只加一句故事、一枚图鉴印记——不分等级，不影响价格，不卖重抽，一块石头最多印一个。"多说的一句"用在两次：第一次唤醒跟在第一句话后面，每年生辰那天再说一次。</p>
+      <p class="lead" style="margin-top:18px;color:rgba(244,239,228,.6)">奇相只多一段故事、一枚图鉴印记，不分等级、不涨价、不卖重抽，一块石头最多印一个。那句多出来的话，第一次见面说一次，以后每年生辰再说一次。</p>
     </div>
     <div class="omen-grid reveal">
       <div class="omen-card"><h3>天痕<span>芦芽 · 丹崖</span></h3><p class="how">一道明显的白色石英脉</p><blockquote>"这道白印，是女娲补我那一下留下的。"<cite>裂过的地方，后来最结实。</cite></blockquote></div>
@@ -592,7 +627,7 @@
     <div class="reveal">
       <p class="kicker">生辰 · Born in a solar term</p>
       <h2>第一次被唤醒那天，<br>是它的生辰</h2>
-      <p class="lead" style="margin-top:18px">建档时空着，唤醒时由系统填。每年到了那个节气，女娲说一句提前写好的生辰话，石头记在那一周出一回特别篇。生在自己本命当令的节气，石精还会自己再补一句。</p>
+      <p class="lead" style="margin-top:18px">唤醒那天赶上哪个节气，生辰就是哪个节气。以后每年到这一天，女娲会说一句早就写好的话，那周的石头记也会出一回特别篇。要是正好生在自己本命当令的节气，石精还会自己再补一句。</p>
     </div>
     <div class="season-rule reveal">
       <div><b style="color:var(--m-wood)">木</b><span class="se">立春 — 谷雨</span><p>"春天了，我也往上长一点。"</p></div>
@@ -627,7 +662,7 @@
       <div class="solar-cell"><div class="t"><b>小寒</b><span class="d">1/5 前后</span></div><p>"冷到骨头里了。它是地的骨头，替你扛一点。"</p></div>
       <div class="solar-cell"><div class="t"><b>大寒</b><span class="d">1/20 前后</span></div><p>"最冷的几天过去，春天就近了。它陪你等。"</p></div>
     </div>
-    <p class="solar-note reveal">生辰话都是女娲的口气，话少，说给主人听；特别篇从典故库取材，只借故事的意思。英文版只显示二分二至附近的生辰（标 EN），其余节气建议改成显示季节——这条待拍板。日期每年差一两天，系统按当年节气表算。</p>
+    <p class="solar-note reveal">生辰话都是女娲的口气：话少，说给主人听。英文版只显示春分、夏至、秋分、冬至（标 EN），其他节气的石头建议改显示季节，比如 Born in early winter——这条还没拍板。日期每年差一两天，按当年的节气表算。</p>
   </div>
 </section>
 
@@ -642,19 +677,19 @@
       <div class="mech-card">
         <p class="idx">重逢 · REUNION</p>
         <h3>被忘了又想起</h3>
-        <p>冷落一阵子再回来，碰一下给的是一条重逢话，不说"你好久没来了"。先按 21 天试，看数据再调。谕历里只记第几次相见，空掉的日子不标出来。</p>
+        <p>冷落一阵子再回来，碰一下，它说的是"被忘了又想起"的话，不怪你。多久算"一阵子"先按 21 天试。空掉的日子不标出来，不扣分。</p>
         <blockquote>"嗯。你回来了。" —— 黛潭</blockquote>
       </div>
       <div class="mech-card">
         <p class="idx">时间胶囊 · CAPSULE</p>
         <h3>给未来的自己</h3>
-        <p>点化时写下一句给未来自己的话（AI 可帮着起草），挑一个开启日：一年后、生日或某个节气。到期那天碰一下，先出"过去的你"，再出石精的开封话。送人时由送的人来封。</p>
+        <p>唤醒那天，写一句给未来的自己的话，挑个日子封起来——一年后、生日，或某个节气。到期碰一下，先看到"过去的你"，再看到它替你收了一年的那句话。送人时，由送的人来封。</p>
         <blockquote>"那天的你把一颗火星藏在这儿。一年了，还在。" —— 星火</blockquote>
       </div>
       <div class="mech-card">
         <p class="idx">节气掉落 · DROPS</p>
         <h3>不搞固定日更</h3>
-        <p>内容跟着节气、月相时不时掉落。生辰话和特别篇就是现成的节气内容；满月、新月各掉一句。掉落的那句也按石头的本命和心境调口气。</p>
+        <p>跟着节气、满月、新月，时不时掉一句。掉下来的那句，也按这块石头的本命和心境调口气。</p>
         <blockquote>"昼夜又一样长了。一年过去，它还在你手里。" —— 秋分</blockquote>
       </div>
     </div>
@@ -666,8 +701,8 @@
   <div class="wrap">
     <div class="reveal">
       <p class="kicker">石主匹配 · Two questions</p>
-      <h2>两道题，找到"为什么这块石头是你的"</h2>
-      <p class="lead" style="margin-top:18px;color:rgba(244,239,228,.6)">第一问落到本命，第二问落到心境，交叉出底色——再把那位精石的"会挑中的人"拿出来给你看。</p>
+      <h2>两道题，找到你的那块石头</h2>
+      <p class="lead" style="margin-top:18px;color:rgba(244,239,228,.6)">第一问定本命，第二问定心境。两道题答完落在哪一格，哪一格的石精就是你的。</p>
     </div>
     <div class="match-grid reveal">
       <div>
@@ -701,7 +736,7 @@
     <div class="reveal">
       <p class="kicker">命名池 · 150 names</p>
       <h2>一百五十个备好的名字</h2>
-      <p class="lead" style="margin-top:18px">从三处取材：颜色的古称、底色的意象、守护典故里的物和地方。不用人名、神名，也不用玉、珍珠、蜜蜡这类名贵东西起名。圆润的石头捡到得最多，名字也备得最多；同一批里不重名。</p>
+      <p class="lead" style="margin-top:18px">名字从三处来：颜色的古称、底色的意象、典故里的物和地方。不用人名神名，也不碰玉、珍珠、蜜蜡这类名贵东西。圆润的石头最多，名字也备得最多；同一批里不重名。</p>
     </div>
     <div class="reveal" style="margin-top:56px">
       <div class="name-row"><span class="el" style="color:var(--m-wood)">木</span><div class="name-marquee"><div class="name-track">
@@ -837,6 +872,43 @@
       render();
     });
   });
+})();
+</script>
+
+<script>
+// 手机端：把天上的地图 5×5 网格转成逐条列表
+(function(){
+  if (!window.matchMedia('(max-width: 960px)').matches) return;
+  var grid = document.querySelector('.skymap-grid');
+  if (!grid) return;
+  var heads = [];
+  grid.querySelectorAll('.head').forEach(function(h){ heads.push(h.textContent.trim()); });
+  var html = '';
+  var cur = '';
+  grid.children && Array.prototype.forEach.call(grid.children, function(cell){
+    if (cell.classList.contains('row-head')) {
+      cur = cell.textContent.trim();
+      html += '<p class="sky-group">' + cur + ' 系</p>';
+    } else if (cell.classList.contains('sky-cell')) {
+      var mood = '';
+      var idx = Array.prototype.indexOf.call(cell.parentNode.children, cell);
+      var col = (idx % 6) - 1;
+      if (heads[col]) mood = heads[col];
+      var name = cell.querySelector('b').textContent.trim();
+      var omen = name.indexOf('◆') > -1 ? ' <i>◆</i>' : '';
+      name = name.replace('◆','').trim();
+      var base = cell.querySelector('.base') ? cell.querySelector('.base').textContent.trim() : '';
+      var sky = cell.querySelector('.sky') ? cell.querySelector('.sky').textContent.trim() : '';
+      var canon = cell.querySelector('.canon-name') ? cell.querySelector('.canon-name').textContent.trim() : '';
+      html += '<div class="sky-item"><span class="who">' + name + omen + '</span>' +
+        '<span class="what"><b>' + mood.split(' ')[0] + ' · ' + base + '</b>' +
+        '守在<em>' + sky.replace('的上空','') + '</em>，典故 ' + canon + '</span></div>';
+    }
+  });
+  var list = document.createElement('div');
+  list.className = 'skymap-list';
+  list.innerHTML = html;
+  grid.parentNode.appendChild(list);
 })();
 </script>
 </body>
